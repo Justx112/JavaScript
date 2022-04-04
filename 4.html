@@ -10,71 +10,44 @@
     <!--
 Обязательное задание.
 
-Необходимо реализовать четыре функции, каждая функция должна принимать по два
-числа и выполнять одну из операций (каждая функция выполняет одну из них):
-1. Сложение
-2. Разность
-3. Умножение
-4. Деление
-
-Необходимо сделать так, чтобы функция вернула число, например выражение
-`console.log(sum(2, 6));` должно вывести число 8 в консоль (sum - функция
-сложения в данном примере, ваши названия функций могут отличаться).
-
-Округлять значения, которые возвращают функции не нужно, однако, обратите
-внимание на разность, функция должна вычесть из большего числа меньшее, либо
-вернуть 0, если числа равны.
-
-Функциям всегда передаются корректные числа, проверки на NaN, Infinity делать
-не нужно.
-
-Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+1. Необходимо вывести в консоль массив продуктов в котором есть хоть одна
+фотография используя метод filter. Исходные данные - массив products.
+2. Необходимо отсортировать массив products используя метод sort по цене,
+начиная с самой маленькой, заканчивая самой большой ценой, после чего вывести
+отсортированный массив в консоль.
 -->
     <script>
         "use strict";
 
-        /**
-         * 
-         * @param {Number} a first argument
-         * @param {Number} b second argument
-         * @returns {Number} return sum of 2 arguments
-         */
-        function sum(a, b) {
-            return a + b;
-        }
-
-        /**
-         * 
-         * @param {Number} a first argument
-         * @param {Number} b second argument
-         * @returns {Number}  Return diffrence between arguments subtracts a smaller value from a larger value
-         */
-        function sub(a, b) {
-            return b <= a ? a - b : b - a;
-        }
-
-        /**
-         * @param {Number} a first argument
-         * @param {Number} b second argument
-         * @returns {Number} Return devisions a by b
-         */
-        function div(a, b) {
-            return Math.round((a / b) * 100) / 100;
-        }
-
-        /**
-         * @param {Number} a first argument
-         * @param {Number} b second argument
-         * @returns {Number} Returns multiply a * b
-         */
-        function mult(a, b) {
-            return Math.round((a * b) * 100) / 100;
-        }
-
-        console.log(sum(1, 3));
-        console.log(sub(1, 3));
-        console.log(div(1, 3));
-        console.log(mult(1, 3));
+        const products = [{
+            id: 3,
+            price: 127,
+            photos: [
+                "1.jpg",
+                "2.jpg",
+            ],
+        }, {
+            id: 5,
+            price: 499,
+            photos: [],
+        }, {
+            id: 10,
+            price: 26,
+            photos: [
+                "3.jpg",
+            ],
+        }, {
+            id: 8,
+            price: 78,
+        },];
+        /* Не знаю почему, но у меня VS code разрывает строчку на "product.photos ? .length"
+        и выпадает естественно ошибка. Что бы поправить пришлось отключить автоисправления
+        */
+        console.log("Первое задание");
+        products.filter((product) => product.photos?.length > 0)
+            .forEach((newproducts) => console.log(newproducts));
+        console.log("Второе задание");
+        console.log(products.sort((a, b ) => a.price - b.price));
     </script>
 </body>
 
