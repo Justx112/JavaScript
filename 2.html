@@ -65,23 +65,34 @@
       <a href="#">link</a>
      */
 
-     
+    const targetDiv = document.querySelector(".dropdown");
+    const newEl = document.createElement('a');
+    newEl.textContent = "link";
+    newEl.setAttribute('href', '#');
+    targetDiv.insertAdjacentElement('afterend', newEl);
+
+    document.querySelector(".dropdown").insertAdjacentHTML('afterend', '<a href="#">link</a>');
+    // не знаю как предпологалось это делать, я сделал в 2 вариантах
 
     /*
     5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
      */
 
+    document.querySelector('*[id = dropdownMenuButton]').id = "superDropdown";
+    // я помню что есть отдель метод что бы искать id, но хотелось бы
+    // единообразие. Если это слишком долго будет выполнятся пожалуйста сообщите)
 
     /*
     6. Добавьте атрибут data-dd со значением 3 элементу у которого существует
     атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
      */
-
+    document.querySelector('*[aria-labelledby = "dropdownMenuButton"]').dataset.dd = "3";
 
     /*
     7. Удалите атрибут type у элемента с классом "dropdown-toggle".
      */
 
+    document.querySelector('.dropdown-toggle').removeAttribute('type');
 
     /*
     8. Выведите в консоль все имеющиеся атрибуты и их значения тега у которого
@@ -90,6 +101,10 @@
     Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
      */
 
+    const targetAtr = document.getElementsByClassName('btn dropdown-toggle')[0].attributes;
+    for (let i = 0; i < targetAtr.length; i++) {
+      console.log(`name: ${targetAtr[i].name}, value: ${targetAtr[i].value}`);
+    }
 
   </script>
 </body>
