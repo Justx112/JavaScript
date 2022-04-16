@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+  <style>
+    i {
+      font-size: 50px;
+    }
+
+    .golden {
+      color: gold;
+    }
+
+    .stars_container {
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <!--
+Обязательное задание.
+
+Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
+стирать, код с решением задачи пишем под комментарием.
+-->
+
+  <div class="stars_container">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+  </div>
+
+  <script>
+    "use strict";
+
+    /*
+    1. При наведении на любую из звезд, данной звезде должен ставиться класс
+    golden, также такой класс должен ставиться всем звездам до нее слева.
+    */
+    let targetStar = null;
+
+    document.querySelector(".stars_container")
+      .addEventListener("mouseover", setClass);
+
+    function setClass() {
+      const htnlCollection = document.querySelector(".stars_container").children;
+      for (let i = 0; i < htnlCollection.length; i++) {
+        if (event.target === htnlCollection[i] && targetStar <= i) {
+          targetStar = i
+          for (let j = i; j >= 0; j--) {
+            htnlCollection[j].classList.add("golden");
+          }
+        }
+        else if ((event.target === htnlCollection[i] && targetStar > i )
+        ) {
+          for (let j = htnlCollection.length - 1; j > i; j--) {
+            htnlCollection[j].classList.remove("golden");
+            targetStar = j;
+          }
+        }
+        // else if(event.target.className === "stars_container"
+        //   && event.target.className === "fas") {
+        //   for (let j = htnlCollection.length; j >= 0; j--) {
+        //     htnlCollection[j].classList.remove("golden");
+        //     targetStar = j;
+        //   }
+        // }
+      }
+    }
+
+    /*
+    2. Когда мы уводим курсор мыши от звезды, все поставленные классы из первого
+    задания должны быть удалены.
+     */
+    document.querySelector(".stars_container")
+      .addEventListener("mouseleave", removeClass);
+
+      function removeClass(){
+        const htnlCollection = document.querySelector(".stars_container").children;
+        for (let i = 0; i < htnlCollection.length; i++) {
+          htnlCollection[i].classList.remove("golden");
+          targetStar = 0;
+        }
+      }
+
+    /*
+    3. Когда мы переводим мышь от одной звезды к другой, у нас могут мигать
+    звезды (временно могут становиться черными). Почему так? Напишите словами.
+    Можем ли мы это исправить? Если да, то предложите решение.
+    */
+    // Вы простите я что то увлекся и сделал полностью рабочие звезды(как на большинстве сайтов).
+    // Правда чуть чуть пришлось поменять CSS иначе контейнер тянется на всю ширину)
+
+  </script>
+</body>
+
+</html>
